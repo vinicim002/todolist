@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="src/css/styles.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="info">
+        <div class="nome-avatar">
+          <p>Olá,<span>Vinicius</span></p>
+          <img src="#" alt="#" />
+        </div>
+        <div class="data-hora">
+          <p class="data">09/06/2025</p>
+          <p class="hora">12:00pm</p>
+        </div>
+      </div>
+
+      <div class="barra-de-pesquisa">
+        <input type="text" placeholder="Procurar tarefa" />
+      </div>
+
+      <div class="tarefas-concluidas">
+        <p>Tarefas Concluídas</p>
+        <div>graph</div>
+      </div>
+
+      <ul class="tarefas">
+        <li>
+          <label>
+            <input type="checkbox" />
+            Nome da tarefa
+          </label>
+          <button class="btn-delete" aria-label="Deletar tarefa">
+            <img src="path/para/lixeira.svg" alt="" />
+          </button>
+        </li>
+      </ul>
+
+      <form class="form-add-tarefa">
+        <button type="submit">+</button>
+      </form>
+    </div>
+
+    <script src="src/js/index.js"></script>
+  </body>
+</html>
