@@ -74,14 +74,13 @@ body {
 .barra-de-pesquisa {
     display: flex;
     height: 4rem;
-    background-color: white;
     border-radius: 1rem;
 }
 
 .barra-de-pesquisa input {
     width: 90%;
     border: none;
-    border-radius: 1rem;
+    border-radius: 1rem 0 0 1rem;
 }
 
 .icone-pesquisa {
@@ -90,6 +89,8 @@ body {
     margin: auto auto;
     background-color: var(--second-color);
     border-radius: 0 1rem 1rem 0;
+    border: none;
+    cursor: pointer;
 }
 
 .barra-de-pesquisa i {
