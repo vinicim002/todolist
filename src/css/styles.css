@@ -38,6 +38,8 @@ body {
   box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
 }
 
+/*Info*/
+
 .info {
   display: flex;
   flex-direction: column;
@@ -52,9 +54,51 @@ body {
 }
 
 .avatar {
-  background-color: white;
-  height: 6rem;
   width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent; /* Deixa o fundo do botão transparente */
+  cursor: pointer;
+
+  position: relative;
+  display: inline-block;
+}
+
+.avatar::after {
+    content: '\f040'; 
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900; 
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    color: white;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    pointer-events: none; 
+}
+
+
+.avatar:hover::after {
+    /* FICA VISÍVEL */
+    opacity: 1; 
+}
+
+#avatar-principal-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -75,9 +119,11 @@ body {
 
 .data-hora p {
   font-size: 3rem;
-  font-weight: normal;
+  font-weight: 600;
   color: white;
 }
+
+/*Pesquisa*/
 
 .barra-de-pesquisa {
   display: flex;
@@ -226,4 +272,58 @@ body {
 
   font-size: 1.6rem;
   color: white;
+}
+
+/*Modal*/
+#modal-selecao-avatar {
+  /* 👇 NOVAS PROPRIEDADES ESSENCIAIS */
+  position: fixed; /* Fixa o modal na tela, mesmo com rolagem */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-conteudo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  background-color: var(--primary-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
+}
+
+.modal-conteudo h3 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.lista-de-opcoes {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.modal-conteudo img {
+  width: 8rem;
+  aspect-ratio: 1/1;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+
+  border: 5px solid transparent; /* Adiciona uma borda transparente para evitar que o layout "pule" */
+  transition: border-color 0.2s ease-in-out; /* Define a transição */
+}
+
+.modal-conteudo img:hover {
+  border-color: var(--second-color); /* Apenas muda a cor da borda */
 }

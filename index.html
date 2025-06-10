@@ -17,11 +17,15 @@
     <div class="main-container">
       <div class="info">
         <div class="nome-avatar">
+          <button id="btn-trocar-avatar" class="avatar" type="button">
+            <img
+              id="avatar-principal-img"
+              src="src/img/img01.jpg"
+              alt="Avatar atual"
+            />
+          </button>
         </div>
-        <div class="data-hora">
-          <p class="data">09/06/2025</p>
-          <p class="hora">12:00pm</p>
-        </div>
+        <div class="data-hora"></div>
       </div>
 
       <div class="barra-de-pesquisa">
@@ -61,6 +65,39 @@
       <form class="form-add-tarefa">
         <button type="submit">+</button>
       </form>
+    </div>
+
+    <div id="modal-selecao-avatar" class="modal-avatar">
+      <div class="modal-conteudo">
+        <h3>Escolha seu avatar</h3>
+        <div id="opcoes-avatar" class="lista-de-opcoes">
+          <img
+            src="src/img/img01.jpg"
+            alt="Avatar opção 1"
+            data-avatar-src="caminho/para/avatar1.png"
+          />
+          <img
+            src="src/img/img02.jpg"
+            alt="Avatar opção 2"
+            data-avatar-src="caminho/para/avatar2.png"
+          />
+          <img
+            src="src/img/img03.jpg"
+            alt="Avatar opção 3"
+            data-avatar-src="caminho/para/avatar3.png"
+          />
+          <img
+            src="src/img/img04.jpg"
+            alt="Avatar opção 4"
+            data-avatar-src="caminho/para/avatar3.png"
+          />
+          <img
+            src="src/img/img05.jpg"
+            alt="Avatar opção 5"
+            data-avatar-src="caminho/para/avatar3.png"
+          />
+        </div>
+      </div>
     </div>
 
     <script src="src/js/index.js"></script>

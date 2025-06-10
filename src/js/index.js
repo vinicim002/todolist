@@ -1,50 +1,92 @@
-// É uma boa prática selecionar os elementos do DOM depois que ele foi carregado.
-// Vamos mover esta linha para dentro do addEventListener.
-// let nameContainer = document.querySelector(".nome-avatar"); 
+document.addEventListener("DOMContentLoaded", () => {
+  const nameContainer = document.querySelector(".nome-avatar");
+  const divDataHora = document.querySelector(".data-hora");
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Seleciona o container aqui, garantindo que ele já existe na página.
-    const nameContainer = document.querySelector(".nome-avatar");
-    
-    const nomeSalvo = localStorage.getItem("userName");
+  nameContainer.innerHTML = "";
 
-    // Se 'nomeSalvo' tiver um valor (não for null ou undefined), o 'if' será verdadeiro.
-    if (nomeSalvo) {
-        mostrarSaudacao(nomeSalvo, nameContainer);
-    } else {
-        promptParaNome(nameContainer);
-    }
+  const nomeSalvo = localStorage.getItem("userName");
+  const imgSalva = localStorage.getItem("imgUser");
+
+  if (nomeSalvo) {
+    // 1. Cria a saudação e a adiciona
+    const elementoSaudacao = criarSaudacao(nomeSalvo);
+    nameContainer.appendChild(elementoSaudacao);
+  } else {
+    // 2. Se não há nome, chama a função para pedir e configurar
+    pedirEConfigurarNome(nameContainer);
+  }
+
+  // 3. Cria e adiciona o avatar em ambos os casos
+  const elementoAvatar = criarAvatar(imgSalva);
+  nameContainer.appendChild(elementoAvatar);
+
+  // 4. Cria e adiciona a data/hora
+  dataHora(divDataHora);
 });
 
-function mostrarSaudacao(nome, container) {
-    // Limpando qualquer conteúdo anterior
-    container.innerHTML = '';
-
-    const saudacao = document.createElement('p');
-    saudacao.innerHTML = `Olá, <span>${nome}</span>`;
-    
-    // Bônus: Recriando o avatar que era apagado pelo innerHTML
-    const avatar = document.createElement('div');
-    avatar.className = 'avatar';
-
-    container.appendChild(saudacao);
-    container.appendChild(avatar);
+function criarSaudacao(nome) {
+  const saudacao = document.createElement("p");
+  saudacao.innerHTML = `Olá, <span>${nome}</span>`;
+  return saudacao;
 }
 
-function promptParaNome(container) {
-    const nome = prompt("Qual é o seu nome?");
+function pedirEConfigurarNome(container) {
+  const nome = prompt("Bem-vindo! Qual é o seu nome?");
 
-    // nome.trim() remove espaços em branco do início e do fim.
-    if (nome && nome.trim() !== '') {
-        localStorage.setItem('userName', nome.trim());
-        
-        // Agora que salvamos, podemos simplesmente chamar a outra função
-        // para mostrar a saudação. Isso evita repetir código!
-        mostrarSaudacao(nome.trim(), container);
-    } else {
-        // Se o usuário não digitou um nome, podemos pedir de novo
-        // ou mostrar um nome padrão.
-        alert("Nome inválido. Tente novamente.");
-        promptParaNome(container); // Pede o nome de novo (recursividade)
-    }
+  if (nome && nome.trim() !== "") {
+    const nomeValido = nome.trim();
+    localStorage.setItem("userName", nomeValido);
+
+    // Usa a função 'criarSaudacao' para pegar o elemento...
+    const elementoSaudacao = criarSaudacao(nomeValido);
+    // ...e então o adiciona ao container.
+    container.appendChild(elementoSaudacao);
+  } else {
+    alert("Nome inválido. Um nome padrão 'Usuário' será usado.");
+    // A mesma lógica para o nome padrão
+    const elementoSaudacao = criarSaudacao("Usuário");
+    container.appendChild(elementoSaudacao);
+  }
 }
+
+function criarAvatar(caminhoDaImagem) {
+  const btnAvatar = document.createElement("button");
+  btnAvatar.className = "avatar";
+  btnAvatar.id = "btn-trocar-avatar";
+
+  const imgAvatar = document.createElement("img");
+  imgAvatar.id = "avatar-principal-img";
+  imgAvatar.src = "src/img/img01.jpg";
+  imgAvatar.alt = "Avatar do usuário";
+
+  btnAvatar.appendChild(imgAvatar);
+  return btnAvatar;
+}
+
+function dataHora(container) {
+  container.innerHTML = "";
+
+  const dataHora = new Date();
+
+  const data = document.createElement("p");
+  const hora = document.createElement("p");
+
+  data.className = "data";
+  hora.className = "hora";
+
+  data.textContent = dataHora.toLocaleDateString("pt-BR");
+  hora.textContent = dataHora.toLocaleTimeString("pt-BR", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  container.appendChild(data);
+  container.appendChild(hora);
+}
+
+const btnTrocarAvatar = document.querySelector("#btn-trocar-avatar");
+const modal = document.querySelector('#modal-selecao-avatar');
+
+btnTrocarAvatar.addEventListener("click", () => {
+  modal.style.display = "flex";
+});
