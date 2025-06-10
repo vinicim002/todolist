@@ -1,99 +1,229 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --primary-color: #171614;
-    --second-color: #440381;
+  --primary-color: #171614;
+  --second-color: #440381;
 }
 
 html {
-    font-size: 62.5%;
-    font-family: "Montserrat", sans-serif;
+  font-size: 62.5%;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background: linear-gradient(
+    135deg,
+    rgba(137, 94, 244) 0%,
+    rgba(72, 69, 169) 30%,
+    rgba(158, 88, 246) 100%
+  );
 
-    min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
 }
 
 .main-container {
-    padding: 2rem 4rem;
-    background-color: var(--primary-color);
-    border-radius: 1rem;
+  padding: 2rem 4rem;
+  background-color: var(--primary-color);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
 }
 
 .info {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
 }
 
 .nome-avatar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    column-gap: 30rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 30rem;
 }
 
 .avatar {
-    background-color: white;
-    height: 6rem;
-    width: 6rem;
-    border-radius: 50%;
+  background-color: white;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
 }
 
-.nome-avatar p{
-    display: flex;
-    flex-direction: column;
-    font-size: 4rem;
-    font-weight: bold;
-    color: white;
+.nome-avatar p {
+  display: flex;
+  flex-direction: column;
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
 }
 
 .data-hora {
-    display: flex;
-    flex-direction: row;
-    column-gap: 4rem;
-    padding-bottom: 4rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: 4rem;
+  padding-bottom: 4rem;
 }
 
 .data-hora p {
-    font-size: 3rem;
-    font-weight: normal;
-    color: white;
+  font-size: 3rem;
+  font-weight: normal;
+  color: white;
 }
 
 .barra-de-pesquisa {
-    display: flex;
-    height: 4rem;
-    border-radius: 1rem;
+  display: flex;
+  height: 4rem;
+  border-radius: 1rem;
+  margin-bottom: 6rem;
+}
+
+.barra-de-pesquisa input:focus {
+  border: 2px solid var(--second-color);
 }
 
 .barra-de-pesquisa input {
-    width: 90%;
-    border: none;
-    border-radius: 1rem 0 0 1rem;
+  width: 90%;
+  border: none;
+  border-radius: 1rem 0 0 1rem;
+  outline: none;
+  padding: 1rem;
+  font-size: 1.6rem;
 }
 
 .icone-pesquisa {
-    height: 4rem;
-    width: 10%;
-    margin: auto auto;
-    background-color: var(--second-color);
-    border-radius: 0 1rem 1rem 0;
-    border: none;
-    cursor: pointer;
+  height: 4rem;
+  width: 10%;
+  margin: auto auto;
+  background: linear-gradient(
+    135deg,
+    rgba(137, 94, 244) 0%,
+    rgba(72, 69, 169) 30%,
+    rgba(158, 88, 246) 100%
+  );
+  border-radius: 0 1rem 1rem 0;
+  border: none;
+  cursor: pointer;
 }
 
 .barra-de-pesquisa i {
-    font-size: 2.5rem;
-    color: white;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.tarefas-concluidas {
+  background-color: white;
+  width: 100%;
+  height: 6rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+
+  border-radius: 1rem;
+
+  margin-bottom: 4rem;
+}
+
+.tarefas-concluidas p {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.tarefas {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.tarefas li {
+  text-decoration: none;
+  background-color: white;
+  width: 100%;
+  height: 6rem;
+  border-radius: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 1rem;
+}
+
+.tarefas li label {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  column-gap: 30rem;
+
+  cursor: pointer;
+}
+
+.tarefas li label input[type="checkbox"] {
+  width: 3rem;
+  cursor: pointer;
+}
+
+.btn-delete {
+  border: none;
+  cursor: pointer;
+}
+
+.btn-delete i {
+  background: linear-gradient(
+    135deg,
+    rgba(137, 94, 244) 0%,
+    rgba(72, 69, 169) 30%,
+    rgba(158, 88, 246) 100%
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+
+  font-size: 3rem;
+}
+
+.form-add-tarefa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-add-tarefa button {
+  background: linear-gradient(
+    135deg,
+    rgba(137, 94, 244) 0%,
+    rgba(72, 69, 169) 30%,
+    rgba(158, 88, 246) 100%
+  );
+  width: 70%;
+  height: 4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 1rem;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 1.6rem;
+  color: white;
 }
