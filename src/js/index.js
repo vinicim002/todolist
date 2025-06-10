@@ -30,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // 6. Preenche a data e a hora
     dataHora(divDataHora);
+    setInterval(()=> {
+      dataHora(divDataHora)
+    }, 1000);
 
     // 7. Inicializa toda a lógica interativa do modal (eventos de clique)
     inicializarLogicaDoModal();
