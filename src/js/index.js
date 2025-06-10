@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 7. Inicializa toda a lógica interativa do modal (eventos de clique)
     inicializarLogicaDoModal();
+    adicionarTarefa();
 });
 
 
@@ -84,6 +85,39 @@ function inicializarLogicaDoModal() {
         }
     });
 }
+
+function adicionarTarefa() {
+    const frm = document.querySelector('form');
+    const modal = document.querySelector('#modal-adicionar-tarefa')
+    const inputTarefa = document.querySelector('#tarefa')
+
+    frm.addEventListener('click', () => {
+        modal.style.display = "flex";
+        inputTarefa.focus();
+    });
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    frm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        if(!localStorage.getItem('tarefa')){
+            const tarefas = [];
+            const tarefa = frm.tarefa.value;
+        } else {
+            
+        localStorage.setItem('tarefa', tarefa);
+        localStorage.getItem('tarefa', tarefas.push(tarefa))
+        }
+        modal.style.display = "none";
+    })
+}
+
+
 
 
 // ==========================================================
