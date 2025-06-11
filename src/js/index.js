@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 7. Inicializa toda a lógica interativa do modal (eventos de clique)
     inicializarLogicaDoModal();
-    adicionarTarefa();
+    inicializarAdicaoDeTarefas();
 });
 
 
@@ -86,35 +86,41 @@ function inicializarLogicaDoModal() {
     });
 }
 
-function adicionarTarefa() {
-    const frm = document.querySelector('form');
-    const modal = document.querySelector('#modal-adicionar-tarefa')
-    const inputTarefa = document.querySelector('#tarefa')
+function inicializarAdicaoDeTarefas() {
+    const btnAddTarefa = document.querySelector('.btn-adicionar-tarefa');
+    const modal = document.querySelector('#modal-adicionar-tarefa');
+    const inputTarefa = document.querySelector('#input-nova-tarefa');
+    const frm = document.querySelector('#form-nova-tarefa')
 
-    frm.addEventListener('click', () => {
+    btnAddTarefa.addEventListener('click', () => {
         modal.style.display = "flex";
         inputTarefa.focus();
     });
 
-    modal.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = "none";
-        }
+    modal.addEventListener('click', (e) => {
+        if(e.target === modal) modal.style.display = "none";
     });
 
-    frm.addEventListener('submit', (event) => {
-        event.preventDefault();
+    frm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        //Pegar o valor digitado no input
+        const tarefa = inputTarefa.value;
+        console.log(tarefa);
 
-        if(!localStorage.getItem('tarefa')){
-            const tarefas = [];
-            const tarefa = frm.tarefa.value;
-        } else {
-            
-        localStorage.setItem('tarefa', tarefa);
-        localStorage.getItem('tarefa', tarefas.push(tarefa))
-        }
-        modal.style.display = "none";
+        salvarTarefa(tarefa);
     })
+
+    const salvarTarefa = (tarefa) => {
+
+        if(!localStorage.getItem("tarefa")) {
+            const arrayTarefa = [];
+            localStorage.setItem("tarefa",arrayTarefa.push(tarefa))
+        } else {
+            localStorage.setItem("tarefa", arrayTarefa.push(tarefa));
+        }
+        
+    }
+
 }
 
 

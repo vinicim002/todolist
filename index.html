@@ -62,15 +62,23 @@
         </li>
       </ul>
 
-      <form class="form-add-tarefa">
-        <button type="button">+</button>
-      </form>
+      <div class="btn-add-tarefa">
+        <button type="button" class="btn-adicionar-tarefa">+</button>
+      </div>
     </div>
 
     <div id="modal-adicionar-tarefa">
       <div class="modal-conteudo">
-        <input type="text" id="tarefa" placeholder="Adicione sua tarefa" />
-        <button type="submit">Salvar</button>
+        <h3>Adicionar Nova Tarefa</h3>
+        <form id="form-nova-tarefa">
+          <input
+            type="text"
+            id="input-nova-tarefa"
+            placeholder="Ex: Estudar JavaScript"
+            required
+          />
+          <button type="submit" id="salvarTarefa">Salvar Tarefa</button>
+        </form>
       </div>
     </div>
 
