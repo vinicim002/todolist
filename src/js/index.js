@@ -104,27 +104,29 @@ function inicializarAdicaoDeTarefas() {
     frm.addEventListener('submit', (e) => {
         e.preventDefault();
         //Pegar o valor digitado no input
-        const tarefa = inputTarefa.value;
-        console.log(tarefa);
+        const textoDaTarefa  = inputTarefa.value.trim();
 
-        salvarTarefa(tarefa);
-    })
+        if (textoDaTarefa) {
+            // 1. Pega o array de tarefas do localStorage (ou um array vazio)
+            const tarefasArray = JSON.parse(localStorage.getItem('minhasTarefas') || '[]' );
 
-    const salvarTarefa = (tarefa) => {
+            // 2. Adiciona a nova tarefa como um OBJETO ao array
+            tarefasArray.push({ texto: textoDaTarefa, concluida: false });
 
-        if(!localStorage.getItem("tarefa")) {
-            const arrayTarefa = [];
-            localStorage.setItem("tarefa",arrayTarefa.push(tarefa))
-        } else {
-            localStorage.setItem("tarefa", arrayTarefa.push(tarefa));
+            // 3. Salva o array ATUALIZADO de volta no localStorage
+            localStorage.setItem('minhasTarefas', JSON.stringify(tarefasArray));
+
+            console.log("Tarefa adicionada! Lista atual:", tarefasArray);
+
+            // Limpa o input e fecha o modal
+            inputTarefa.value = '';
+            modal.style.display = 'none';
+
+            renderizarTarefas(tarefasArray); 
         }
-        
-    }
 
+    })
 }
-
-
-
 
 // ==========================================================
 // FUNÇÕES AUXILIARES E "FÁBRICA" (CRIADORAS DE ELEMENTOS)
@@ -182,4 +184,30 @@ function dataHora(container) {
 
     container.appendChild(data);
     container.appendChild(hora);
+}
+
+
+function criarElementoTarefa(texto) {
+    const li = document.createElement("li");
+
+    li.innerHTML = `<label>
+            <input type="checkbox" />
+            ${texto}
+          </label>
+          <button class="btn-delete" aria-label="Deletar tarefa">
+            <i class="fa-solid fa-trash"></i>
+          </button>`;
+
+    return li;
+}
+
+function renderizarTarefas(minhasTarefas) {
+    const ul = document.querySelector("ul");
+
+    ul.innerHTML = '';
+
+    minhasTarefas.forEach((tarefaObj) => {
+        const novoLi = criarElementoTarefa(tarefaObj.texto);
+        ul.appendChild(novoLi);
+    })
 }
