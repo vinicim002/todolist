@@ -1,392 +1,322 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* --- Reset e Variáveis Globais --- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
-  --primary-color: #171614;
-  --second-color: #440381;
+    --primary-color: #171614;
+    --second-color: #440381;
+    --primary-gradient: linear-gradient(135deg, rgba(137, 94, 244) 0%, rgba(72, 69, 169) 30%, rgba(158, 88, 246) 100%);
 }
 
 html {
-  font-size: 62.5%;
-  font-family: "Montserrat", sans-serif;
+    font-size: 62.5%; /* Facilita o uso de rem (1rem = 10px) */
+    font-family: "Montserrat", sans-serif;
 }
 
 body {
-  background: linear-gradient(
-    135deg,
-    rgba(137, 94, 244) 0%,
-    rgba(72, 69, 169) 30%,
-    rgba(158, 88, 246) 100%
-  );
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  min-height: 100vh;
+    background: var(--primary-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
 }
 
+/* --- Container Principal --- */
 .main-container {
-  padding: 2rem 4rem;
-  background-color: var(--primary-color);
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 60rem; /* Limita a largura em telas grandes */
+    padding: 2rem 4rem;
+    background-color: var(--primary-color);
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
+    color: white;
 }
 
-/*Info*/
-
+/* --- Seção Header: Info --- */
 .info {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    padding-bottom: 4rem;
 }
 
 .nome-avatar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  column-gap: 30rem;
-}
-
-.avatar {
-  width: 6rem;
-  height: 6rem;
-  border-radius: 50%;
-  border: none;
-  background-color: transparent; /* Deixa o fundo do botão transparente */
-  cursor: pointer;
-
-  position: relative;
-  display: inline-block;
-}
-
-.avatar::after {
-  content: "\f040";
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  color: white;
-  font-size: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-
-  pointer-events: none;
-}
-
-.avatar:hover::after {
-  /* FICA VISÍVEL */
-  opacity: 1;
-}
-
-#avatar-principal-img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Removido column-gap fixo para melhorar a responsividade */
 }
 
 .nome-avatar p {
-  display: flex;
-  flex-direction: column;
-  font-size: 4rem;
-  font-weight: bold;
-  color: white;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+.avatar {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    padding: 0; /* Remove padding padrão de botões */
+}
+
+.avatar::after {
+    content: "\f040"; /* Código do ícone 'pen' do Font Awesome */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    color: white;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.avatar:hover::after {
+    opacity: 1;
+}
+
+#avatar-principal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .data-hora {
-  display: flex;
-  flex-direction: row;
-  column-gap: 4rem;
-  padding-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
 }
 
 .data-hora p {
-  font-size: 3rem;
-  font-weight: 600;
-  color: white;
+    font-size: 2rem; /* Ajustado para melhor encaixe */
+    font-weight: 600;
 }
 
-/*Pesquisa*/
-
+/* --- Barra de Pesquisa --- */
 .barra-de-pesquisa {
-  display: flex;
-  height: 4rem;
-  border-radius: 1rem;
-  margin-bottom: 6rem;
-}
-
-.barra-de-pesquisa input:focus {
-  border: 2px solid var(--second-color);
+    display: flex;
+    height: 4rem;
+    margin-bottom: 4rem;
 }
 
 .barra-de-pesquisa input {
-  width: 90%;
-  border: none;
-  border-radius: 1rem 0 0 1rem;
-  outline: none;
-  padding: 1rem;
-  font-size: 1.6rem;
+    flex-grow: 1; /* Permite que o input ocupe o espaço disponível */
+    border: none;
+    border-radius: 1rem 0 0 1rem;
+    outline: none;
+    padding: 1rem;
+    font-size: 1.6rem;
+}
+
+.barra-de-pesquisa input:focus {
+    outline: 2px solid var(--second-color);
+    outline-offset: -2px;
 }
 
 .icone-pesquisa {
-  height: 4rem;
-  width: 10%;
-  margin: auto auto;
-  background: linear-gradient(
-    135deg,
-    rgba(137, 94, 244) 0%,
-    rgba(72, 69, 169) 30%,
-    rgba(158, 88, 246) 100%
-  );
-  border-radius: 0 1rem 1rem 0;
-  border: none;
-  cursor: pointer;
+    padding: 0 1.5rem;
+    background: var(--primary-gradient);
+    border-radius: 0 1rem 1rem 0;
+    border: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: white;
 }
 
-.barra-de-pesquisa i {
-  font-size: 2.5rem;
-  color: white;
-}
-
+/* --- Seção de Tarefas --- */
 .tarefas-concluidas {
-  background-color: white;
-  width: 100%;
-  height: 6rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 1rem;
-
-  border-radius: 1rem;
-
-  margin-bottom: 4rem;
+    background-color: #fff;
+    color: var(--primary-color);
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
 }
 
 .tarefas-concluidas p {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.8);
+    font-size: 1.6rem;
+    font-weight: bold;
 }
 
 .tarefas {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2rem;
-  margin-bottom: 4rem;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    margin-bottom: 4rem;
 }
 
 .tarefas li {
-  text-decoration: none;
-  background-color: white;
-  width: 100%;
-  height: 6rem;
-  border-radius: 1rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 0 1rem;
+    background-color: white;
+    width: 100%;
+    min-height: 6rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: var(--primary-color);
+    gap: 1.5rem;
 }
 
 .tarefas li label {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.8);
-
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  column-gap: 30rem;
-
-  cursor: pointer;
+    flex-grow: 1;
+    font-size: 1.6rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: pointer;
 }
 
-.tarefas li label input[type="checkbox"] {
-  width: 3rem;
-  cursor: pointer;
+.tarefas li input[type="checkbox"] {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+/* Estilo para tarefas concluídas */
+li.tarefa-concluida p {
+    text-decoration: line-through;
+    color: #888;
 }
 
 .btn-delete {
-  border: none;
-  cursor: pointer;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #c54141;
+    font-size: 2rem;
 }
 
-.btn-delete i {
-  background: linear-gradient(
-    135deg,
-    rgba(137, 94, 244) 0%,
-    rgba(72, 69, 169) 30%,
-    rgba(158, 88, 246) 100%
-  );
-  -webkit-background-clip: text;
-  color: transparent;
-
-  font-size: 3rem;
+/* --- Botão de Adicionar Tarefa --- */
+.container-btn-adicionar {
+    display: flex;
+    justify-content: center;
 }
 
-.btn-add-tarefa {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.btn-adicionar-tarefa {
+    background: var(--primary-gradient);
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    font-size: 4rem;
+    color: white;
+    line-height: 1;
 }
 
-.btn-add-tarefa button {
-  background: linear-gradient(
-    135deg,
-    rgba(137, 94, 244) 0%,
-    rgba(72, 69, 169) 30%,
-    rgba(158, 88, 246) 100%
-  );
-  width: 70%;
-  height: 4rem;
+/* =================================
+   --- ESTILOS DOS MODAIS ---
+   ================================= */
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 1rem;
-  border: none;
-
-  cursor: pointer;
-
-  font-size: 1.6rem;
-  color: white;
+/* --- Estilo Base para Ambos os Modais --- */
+#modal-adicionar-tarefa, #modal-selecao-avatar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* Começam escondidos */
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    z-index: 1000;
 }
 
-/*Modal adicionar*/
-
-#modal-adicionar-tarefa {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background-color: rgba(0, 0, 0, 0.6);
-
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-conteudo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50rem;
+/* --- Estilos Específicos do Modal de Adicionar Tarefa --- */
+#modal-adicionar-tarefa .modal-conteudo {
+    width: 100%;
+    max-width: 50rem;
 }
 
 #form-nova-tarefa {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  row-gap: 2rem;
-
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
 }
 
 #input-nova-tarefa {
-  border: none;
-  border-radius: 1rem;
-  height: 4rem;
-  padding: 1rem;
-  width: 100%;
+    border: none;
+    border-radius: 1rem;
+    height: 5rem;
+    padding: 1.5rem;
+    width: 100%;
+    font-size: 1.6rem;
+    outline: none;
 }
 
-.modal-conteudo button {
-  background: linear-gradient(
-    135deg,
-    rgba(137, 94, 244) 0%,
-    rgba(72, 69, 169) 30%,
-    rgba(158, 88, 246) 100%
-  );
-  width: 70%;
-  height: 4rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 1rem;
-  border: none;
-
-  cursor: pointer;
-
-  font-size: 1.6rem;
-  color: white;
+#form-nova-tarefa button[type="submit"] {
+    background: var(--primary-gradient);
+    height: 5rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
 }
 
-/*Modal*/
-
-#modal-selecao-avatar {
-  /* 👇 NOVAS PROPRIEDADES ESSENCIAIS */
-  position: fixed; /* Fixa o modal na tela, mesmo com rolagem */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro semi-transparente */
-
-  display: none;
-  justify-content: center;
-  align-items: center;
+/* --- Estilos Específicos do Modal de Seleção de Avatar --- */
+#modal-selecao-avatar .modal-conteudo-avatar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--primary-color);
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
 }
 
-.modal-conteudo {
-  display: flex;
-  flex-direction: column;
-  row-gap: 2rem;
-  background-color: var(--primary-color);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
-}
-
-.modal-conteudo h3 {
-  text-align: center;
-  font-size: 2.5rem;
-  color: rgba(255, 255, 255, 0.8);
+.modal-conteudo-avatar h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .lista-de-opcoes {
-  display: flex;
-  column-gap: 2rem;
+    display: flex;
+    flex-wrap: wrap; /* Para quebrar a linha em telas menores */
+    justify-content: center;
+    gap: 2rem;
 }
 
-.modal-conteudo img {
-  width: 8rem;
-  aspect-ratio: 1/1;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-
-  border: 5px solid transparent; /* Adiciona uma borda transparente para evitar que o layout "pule" */
-  transition: border-color 0.2s ease-in-out; /* Define a transição */
+#modal-selecao-avatar img {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 4px solid transparent;
+    transition: border-color 0.25s ease;
 }
 
-.modal-conteudo img:hover {
-  border-color: var(--second-color); /* Apenas muda a cor da borda */
+#modal-selecao-avatar img:hover {
+    border-color: var(--second-color);
 }

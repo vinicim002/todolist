@@ -4,47 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
+
     <link rel="stylesheet" href="src/css/styles.css" />
+
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
   </head>
   <body>
     <div class="main-container">
-      <div class="info">
-        <div class="nome-avatar">
-          <button id="btn-trocar-avatar" class="avatar" type="button">
-            <img
-              id="avatar-principal-img"
-              src="src/img/img01.jpg"
-              alt="Avatar atual"
-            />
-          </button>
-        </div>
+      <header class="info">
+        <div class="nome-avatar"></div>
         <div class="data-hora"></div>
-      </div>
+      </header>
 
       <div class="barra-de-pesquisa">
         <input type="text" placeholder="Procurar tarefa" />
-        <button class="icone-pesquisa">
+        <button class="icone-pesquisa" aria-label="Pesquisar">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
 
       <div class="tarefas-concluidas">
         <p>Tarefas Concluídas</p>
-        <div>graph</div>
+        <div class="grafico"></div>
       </div>
 
-      <ul class="tarefas">
-        
-      </ul>
+      <ul class="tarefas"></ul>
 
-      <div class="btn-add-tarefa">
+      <div class="container-btn-adicionar">
         <button type="button" class="btn-adicionar-tarefa">+</button>
       </div>
     </div>
@@ -56,7 +45,7 @@
           <input
             type="text"
             id="input-nova-tarefa"
-            placeholder="Ex: Estudar JavaScript"
+            placeholder="Ex: Aprender JavaScript"
             required
           />
           <button type="submit" id="salvarTarefa">Salvar Tarefa</button>
@@ -64,8 +53,8 @@
       </div>
     </div>
 
-    <div id="modal-selecao-avatar" class="modal-avatar">
-      <div class="modal-conteudo">
+    <div id="modal-selecao-avatar">
+      <div class="modal-conteudo-avatar">
         <h3>Escolha seu avatar</h3>
         <div id="opcoes-avatar" class="lista-de-opcoes">
           <img
@@ -98,6 +87,5 @@
     </div>
 
     <script src="src/js/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
   </body>
 </html>
