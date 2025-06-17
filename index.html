@@ -1,97 +1,91 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
 
     <link rel="stylesheet" href="src/css/styles.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="main-container">
-        <header class="info">
-            <div class="nome-avatar"></div>
-            <div class="data-hora">
-                <p class="data">17/06/2025</p>
-                <p class="hora">16:01</p>
-            </div>
-            </header>
+      <header class="info">
+        <div class="nome-avatar"></div>
+        <div class="data-hora"></div>
+      </header>
 
-        <div class="barra-de-pesquisa">
-            <input type="text" placeholder="Procurar tarefa" />
-            <button class="icone-pesquisa" aria-label="Pesquisar">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
+      <div class="barra-de-pesquisa">
+        <input type="text" placeholder="Procurar tarefa" />
+        <button class="icone-pesquisa" aria-label="Pesquisar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
 
-        <div class="tarefas-concluidas">
-            <p>Tarefas Concluídas</p>
-            <div class="grafico">
-                </div>
-        </div>
+      <div class="tarefas-concluidas">
+        <p>Tarefas Concluídas</p>
+        <div class="grafico"></div>
+      </div>
 
-        <ul class="tarefas">
-            <li>
-                <label>
-                    <input type="checkbox" data-index="0">
-                    <p>Estudar JavaScript (DOM)</p>
-                </label>
-                <button class="btn-delete" data-index="0" aria-label="Deletar tarefa">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </li>
+      <ul class="tarefas"></ul>
 
-            <li class="tarefa-concluida">
-                <label>
-                    <input type="checkbox" checked data-index="1">
-                    <p>Finalizar o CSS do projeto</p>
-                </label>
-                <button class="btn-delete" data-index="1" aria-label="Deletar tarefa">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </li>
-
-            <li>
-                <label>
-                    <input type="checkbox" data-index="2">
-                    <p>Aprender sobre APIs</p>
-                </label>
-                <button class="btn-delete" data-index="2" aria-label="Deletar tarefa">
-                    <i class="fa-solid fa-trash"></i>
-                </button>
-            </li>
-            </ul>
-
-        <div class="container-btn-adicionar">
-            <button type="button" class="btn-adicionar-tarefa">+</button>
-        </div>
+      <div class="container-btn-adicionar">
+        <button type="button" class="btn-adicionar-tarefa">+</button>
+      </div>
     </div>
 
     <div id="modal-adicionar-tarefa">
-        <div class="modal-conteudo">
-            <h3>Adicionar Nova Tarefa</h3>
-            <form id="form-nova-tarefa">
-                <input type="text" id="input-nova-tarefa" placeholder="Ex: Aprender JavaScript" required />
-                <button type="submit" id="salvarTarefa">Salvar Tarefa</button>
-            </form>
-        </div>
+      <div class="modal-conteudo">
+        <h3>Adicionar Nova Tarefa</h3>
+        <form id="form-nova-tarefa">
+          <input
+            type="text"
+            id="input-nova-tarefa"
+            placeholder="Ex: Aprender JavaScript"
+            required
+          />
+          <button type="submit" id="salvarTarefa">Salvar Tarefa</button>
+        </form>
+      </div>
     </div>
 
     <div id="modal-selecao-avatar">
-        <div class="modal-conteudo-avatar">
-            <h3>Escolha seu avatar</h3>
-            <div id="opcoes-avatar" class="lista-de-opcoes">
-                <img src="src/img/img01.jpg" alt="Avatar opção 1" data-avatar-src="src/img/img01.jpg" />
-                <img src="src/img/img02.jpg" alt="Avatar opção 2" data-avatar-src="src/img/img02.jpg" />
-                <img src="src/img/img03.jpg" alt="Avatar opção 3" data-avatar-src="src/img/img03.jpg" />
-                <img src="src/img/img04.jpg" alt="Avatar opção 4" data-avatar-src="src/img/img04.jpg" />
-                <img src="src/img/img05.jpg" alt="Avatar opção 5" data-avatar-src="src/img/img05.jpg" />
-            </div>
+      <div class="modal-conteudo-avatar">
+        <h3>Escolha seu avatar</h3>
+        <div id="opcoes-avatar" class="lista-de-opcoes">
+          <img
+            src="src/img/img01.jpg"
+            alt="Avatar opção 1"
+            data-avatar-src="src/img/img01.jpg"
+          />
+          <img
+            src="src/img/img02.jpg"
+            alt="Avatar opção 2"
+            data-avatar-src="src/img/img02.jpg"
+          />
+          <img
+            src="src/img/img03.jpg"
+            alt="Avatar opção 3"
+            data-avatar-src="src/img/img03.jpg"
+          />
+          <img
+            src="src/img/img04.jpg"
+            alt="Avatar opção 4"
+            data-avatar-src="src/img/img04.jpg"
+          />
+          <img
+            src="src/img/img05.jpg"
+            alt="Avatar opção 5"
+            data-avatar-src="src/img/img05.jpg"
+          />
         </div>
+      </div>
     </div>
 
     <script type="module" src="src/js/index.js"></script>
-</body>
+  </body>
 </html>
