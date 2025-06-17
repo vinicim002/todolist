@@ -12,12 +12,7 @@
 <body>
     <div class="main-container">
         <header class="info">
-            <div class="nome-avatar">
-                <p>Olá, <span>Vinicius</span></p>
-                <button id="btn-trocar-avatar" class="avatar" type="button">
-                    <img id="avatar-principal-img" src="src/img/img01.jpg" alt="Avatar atual">
-                </button>
-            </div>
+            <div class="nome-avatar"></div>
             <div class="data-hora">
                 <p class="data">17/06/2025</p>
                 <p class="hora">16:01</p>
@@ -74,7 +69,7 @@
         </div>
     </div>
 
-    <div id="modal-adicionar-tarefa" style="display: none;">
+    <div id="modal-adicionar-tarefa">
         <div class="modal-conteudo">
             <h3>Adicionar Nova Tarefa</h3>
             <form id="form-nova-tarefa">
@@ -84,7 +79,7 @@
         </div>
     </div>
 
-    <div id="modal-selecao-avatar" style="display: none;">
+    <div id="modal-selecao-avatar">
         <div class="modal-conteudo-avatar">
             <h3>Escolha seu avatar</h3>
             <div id="opcoes-avatar" class="lista-de-opcoes">
@@ -97,6 +92,6 @@
         </div>
     </div>
 
-    <script src="src/js/index.js"></script>
+    <script type="module" src="src/js/index.js"></script>
 </body>
 </html>
