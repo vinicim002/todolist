@@ -6,6 +6,7 @@ import {
     renderizarTarefas,
     inicializarInteracaoTarefas,
     inicializarProcurarTarefa,
+    atualizarGrafico,
 } from "./modules.js";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     inicializarModalAddTarefas();
     inicializarInteracaoTarefas();
     inicializarProcurarTarefa();
+    atualizarGrafico();
     
     const tarefasIniciais = JSON.parse(localStorage.getItem('minhasTarefas') || '[]');
     renderizarTarefas(tarefasIniciais);

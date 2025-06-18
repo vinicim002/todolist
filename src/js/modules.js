@@ -213,6 +213,7 @@ export function inicializarModalAddTarefas() {
 
       //Recarrego as tarefas
       renderizarTarefas(arrayTarefas);
+      atualizarGrafico();
     }
   });
 }
@@ -289,6 +290,7 @@ export function inicializarInteracaoTarefas() {
             
             // Re-renderiza toda a lista para refletir a mudança visual (ex: texto riscado)
             renderizarTarefas(tarefasArray);
+            atualizarGrafico();
         }
 
         // Verifica se o elemento clicado (ou seu pai mais próximo) é o botão de deletar
@@ -312,6 +314,7 @@ export function inicializarInteracaoTarefas() {
                 // Precisamos ler de novo para passar o array correto, pois o 'splice' modifica o original
                 const tarefasAtualizadas = JSON.parse(localStorage.getItem("minhasTarefas"));
                 renderizarTarefas(tarefasAtualizadas);
+                atualizarGrafico();
             }
         }
     });
@@ -343,5 +346,64 @@ export function inicializarProcurarTarefa() {
                 tarefaLi.style.display = 'none';
             }
         });
+    });
+}
+
+/*Codigo do grafico gerado pelo gpt*/
+
+// Variável para guardar a instância do nosso gráfico, para que possamos atualizá-la.
+// É importante deixá-la fora das funções para que ela persista.
+let meuGrafico;
+
+/**
+ * Lê os dados do localStorage, conta as tarefas e atualiza o gráfico na tela.
+ */
+export function atualizarGrafico() {
+    // 1. Pega os dados
+    const tarefasArray = JSON.parse(localStorage.getItem('minhasTarefas') || '[]');
+
+    // 2. Conta as tarefas
+    const tarefasConcluidas = tarefasArray.filter(tarefa => tarefa.concluida).length;
+    const tarefasPendentes = tarefasArray.length - tarefasConcluidas;
+
+    // 3. Prepara o 'palco' para o gráfico
+    const ctx = document.getElementById('graficoTarefas');
+
+    // 4. Destrói o gráfico anterior antes de desenhar um novo.
+    // Isso é MUITO IMPORTANTE para evitar bugs visuais ao atualizar.
+    if (meuGrafico) {
+        meuGrafico.destroy();
+    }
+
+    // 5. Cria a nova instância do gráfico
+    meuGrafico = new Chart(ctx, {
+        type: 'doughnut', // Tipo de gráfico
+        data: {
+            // Legendas que aparecem ao lado das cores
+            datasets: [{
+                label: 'Status das Tarefas',
+                // Os dados que calculamos
+                data: [tarefasConcluidas, tarefasPendentes],
+                // As cores de cada fatia do gráfico
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.7)', // Verde/Azul para concluídas
+                    'rgba(255, 159, 64, 0.7)'  // Laranja para pendentes
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            // Desativa a legenda padrão para termos um visual mais limpo
+            legend: {
+                display: false
+            },
+            // Garante que o gráfico se ajuste ao tamanho do container
+            responsive: true,
+            maintainAspectRatio: false,
+        }
     });
 }

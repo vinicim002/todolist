@@ -2,241 +2,279 @@
 
 /* --- Reset e Variáveis Globais --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --primary-color: #171614;
-    --second-color: #440381;
-    --primary-gradient: linear-gradient(135deg, rgba(137, 94, 244) 0%, rgba(72, 69, 169) 30%, rgba(158, 88, 246) 100%);
+  --primary-color: #171614;
+  --second-color: #440381;
+  --primary-gradient: linear-gradient(
+    135deg,
+    rgba(137, 94, 244) 0%,
+    rgba(72, 69, 169) 30%,
+    rgba(158, 88, 246) 100%
+  );
+  --second-gradient: linear-gradient(
+    135deg, 
+    #fcfdff 0%, 
+    #d8e7fb 30%, 
+    #d5c5ea 100%)
 }
 
 html {
-    font-size: 62.5%; /* Facilita o uso de rem (1rem = 10px) */
-    font-family: "Montserrat", sans-serif;
+  font-size: 62.5%; /* Facilita o uso de rem (1rem = 10px) */
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
-    background: var(--primary-gradient);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2rem;
+  background: var(--primary-gradient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
 /* --- Container Principal --- */
 .main-container {
-    width: 100%;
-    max-width: 60rem; /* Limita a largura em telas grandes */
-    padding: 2rem 4rem;
-    background-color: var(--primary-color);
-    border-radius: 1rem;
-    box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
-    color: white;
+  width: 100%;
+  max-width: 60rem; /* Limita a largura em telas grandes */
+  padding: 2rem 4rem;
+  background-color: var(--primary-color);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
+  color: white;
 }
 
 /* --- Seção Header: Info --- */
 .info {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2rem;
-    padding-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding-bottom: 4rem;
 }
 
 .nome-avatar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Removido column-gap fixo para melhorar a responsividade */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Removido column-gap fixo para melhorar a responsividade */
 }
 
 .nome-avatar p {
-    font-size: 4rem;
-    font-weight: bold;
+  font-size: 4rem;
+  font-weight: bold;
 }
 
 .avatar {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    position: relative;
-    padding: 0; /* Remove padding padrão de botões */
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0; /* Remove padding padrão de botões */
 }
 
 .avatar::after {
-    content: "\f040"; /* Código do ícone 'pen' do Font Awesome */
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    color: white;
-    font-size: 2.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+  content: "\f040"; /* Código do ícone 'pen' do Font Awesome */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  color: white;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .avatar:hover::after {
-    opacity: 1;
+  opacity: 1;
 }
 
 #avatar-principal-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .data-hora {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .data-hora p {
-    font-size: 2rem; /* Ajustado para melhor encaixe */
-    font-weight: 600;
+  font-size: 2rem; /* Ajustado para melhor encaixe */
+  font-weight: 600;
 }
 
 /* --- Barra de Pesquisa --- */
 .barra-de-pesquisa {
-    position: relative;
-    display: flex;
-    align-items: center;
-    height: 4.5rem;
-    margin-bottom: 4rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 4.5rem;
+  margin-bottom: 4rem;
 }
 
 .barra-de-pesquisa input {
-    width: 100%;
-    height: 100%;
-    
-    padding-left: 4.5rem;
-    padding-right: 1.5rem; 
+  width: 100%;
+  height: 100%;
 
-    border: 2px solid transparent;
-    border-radius: 1rem;
-    outline: none;
-    font-size: 1.6rem;
-    transition: border-color 0.2s ease;
+  padding-left: 4.5rem;
+  padding-right: 1.5rem;
+
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  outline: none;
+  font-size: 1.6rem;
+  transition: border-color 0.2s ease;
 }
 
 .barra-de-pesquisa input:focus {
-    border-color: var(--second-color);
+  border-color: var(--second-color);
 }
 
 .icone-pesquisa {
-    position: absolute;
-    left: 1.5rem;
-    
-    top: 50%;
-    transform: translateY(-50%);
-    
-    font-size: 1.8rem;
-    color: #999;
+  position: absolute;
+  left: 1.5rem;
 
-    pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 1.8rem;
+  color: #999;
+
+  pointer-events: none;
 }
 
 /* --- Seção de Tarefas --- */
 .tarefas-concluidas {
-    background-color: #fff;
-    color: var(--primary-color);
-    width: 100%;
-    height: 6rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 2rem;
-    border-radius: 1rem;
-    margin-bottom: 2rem;
+  background-color: #fff;
+  color: var(--primary-color);
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
 }
 
 .tarefas-concluidas p {
-    font-size: 1.6rem;
-    font-weight: bold;
+  font-size: 1.6rem;
+  font-weight: bold;
 }
 
 .tarefas {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5rem;
-    margin-bottom: 4rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  margin-bottom: 4rem;
+  overflow-y: scroll;
+  max-height: 22rem;
+  padding-right: 1rem;
 }
 
 .tarefas li {
-    background-color: white;
-    width: 100%;
-    min-height: 6rem;
-    border-radius: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    color: var(--primary-color);
-    gap: 1.5rem;
+  background-color: white;
+  width: 100%;
+  min-height: 6rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: var(--primary-color);
+  gap: 1.5rem;
 }
 
 .tarefas li label {
-    flex-grow: 1;
-    font-size: 1.6rem;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    cursor: pointer;
+  flex-grow: 1;
+  font-size: 1.6rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
 }
 
 .tarefas li input[type="checkbox"] {
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
 }
+
+/* --- Estilização da Barra de Rolagem --- */
+
+/* Aplica-se ao elemento com a barra de rolagem */
+.tarefas::-webkit-scrollbar {
+  width: 1.2rem; /* Largura da barra de rolagem */
+}
+
+/* Estiliza o trilho (o fundo da barra) */
+.tarefas::-webkit-scrollbar-track {
+  background: var(--second-gradient);
+  border-radius: 1rem;
+}
+
+/* Estiliza o polegar (a parte que se move) */
+.tarefas::-webkit-scrollbar-thumb {
+  background: var(--primary-gradient);
+  border-radius: 10px;
+}
+
+/* (Opcional) Efeito ao passar o mouse sobre o polegar */
+/* .tarefas::-webkit-scrollbar-thumb:hover {
+  background: #2e2e2e;
+} */
 
 /* Estilo para tarefas concluídas */
 li.tarefa-concluida p {
-    text-decoration: line-through;
-    color: #888;
+  text-decoration: line-through;
+  color: #888;
 }
 
 .btn-delete {
-    border: none;
-    background: none;
-    cursor: pointer;
-    color: #c54141;
-    font-size: 2rem;
+  border: none;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  color: transparent;
+  cursor: pointer;
+  font-size: 2rem;
 }
 
 /* --- Botão de Adicionar Tarefa --- */
 .container-btn-adicionar {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .btn-adicionar-tarefa {
-    background: var(--primary-gradient);
-    width: 7rem;
-    height: 7rem;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    font-size: 4rem;
-    color: white;
-    line-height: 1;
+  background: var(--primary-gradient);
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 4rem;
+  color: white;
+  line-height: 1;
 }
 
 /* =================================
@@ -244,88 +282,94 @@ li.tarefa-concluida p {
    ================================= */
 
 /* --- Estilo Base para Ambos os Modais --- */
-#modal-adicionar-tarefa, #modal-selecao-avatar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none; /* Começam escondidos */
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    z-index: 1000;
+#modal-adicionar-tarefa,
+#modal-selecao-avatar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none; /* Começam escondidos */
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 1000;
 }
 
 /* --- Estilos Específicos do Modal de Adicionar Tarefa --- */
 #modal-adicionar-tarefa .modal-conteudo {
-    width: 100%;
-    max-width: 50rem;
+  width: 100%;
+  max-width: 50rem;
 }
 
 #form-nova-tarefa {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
 }
 
 #input-nova-tarefa {
-    border: none;
-    border-radius: 1rem;
-    height: 5rem;
-    padding: 1.5rem;
-    width: 100%;
-    font-size: 1.6rem;
-    outline: none;
+  border: none;
+  border-radius: 1rem;
+  height: 5rem;
+  padding: 1.5rem;
+  width: 100%;
+  font-size: 1.6rem;
+  outline: none;
 }
 
 #form-nova-tarefa button[type="submit"] {
-    background: var(--primary-gradient);
-    height: 5rem;
-    border-radius: 1rem;
-    border: none;
-    cursor: pointer;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: white;
+  background: var(--primary-gradient);
+  height: 5rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: white;
 }
 
 /* --- Estilos Específicos do Modal de Seleção de Avatar --- */
 #modal-selecao-avatar .modal-conteudo-avatar {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    background-color: var(--primary-color);
-    border-radius: 1rem;
-    padding: 3rem;
-    box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: var(--primary-color);
+  border-radius: 1rem;
+  padding: 3rem;
+  box-shadow: 0 4px 16px 6px rgba(0, 0, 0, 0.25);
 }
 
 .modal-conteudo-avatar h3 {
-    text-align: center;
-    font-size: 2.5rem;
-    color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .lista-de-opcoes {
-    display: flex;
-    flex-wrap: wrap; /* Para quebrar a linha em telas menores */
-    justify-content: center;
-    gap: 2rem;
+  display: flex;
+  flex-wrap: wrap; /* Para quebrar a linha em telas menores */
+  justify-content: center;
+  gap: 2rem;
 }
 
 #modal-selecao-avatar img {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
-    border: 4px solid transparent;
-    transition: border-color 0.25s ease;
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 4px solid transparent;
+  transition: border-color 0.25s ease;
 }
 
 #modal-selecao-avatar img:hover {
-    border-color: var(--second-color);
+  border-color: var(--second-color);
+}
+
+.grafico {
+  width: 5rem; /* Ajuste o tamanho conforme preferir */
+  height: 5rem; /* Ajuste o tamanho conforme preferir */
 }
