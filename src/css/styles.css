@@ -113,33 +113,42 @@ body {
 
 /* --- Barra de Pesquisa --- */
 .barra-de-pesquisa {
+    position: relative;
     display: flex;
-    height: 4rem;
+    align-items: center;
+    height: 4.5rem;
     margin-bottom: 4rem;
 }
 
 .barra-de-pesquisa input {
-    flex-grow: 1; /* Permite que o input ocupe o espaço disponível */
-    border: none;
-    border-radius: 1rem 0 0 1rem;
+    width: 100%;
+    height: 100%;
+    
+    padding-left: 4.5rem;
+    padding-right: 1.5rem; 
+
+    border: 2px solid transparent;
+    border-radius: 1rem;
     outline: none;
-    padding: 1rem;
     font-size: 1.6rem;
+    transition: border-color 0.2s ease;
 }
 
 .barra-de-pesquisa input:focus {
-    outline: 2px solid var(--second-color);
-    outline-offset: -2px;
+    border-color: var(--second-color);
 }
 
 .icone-pesquisa {
-    padding: 0 1.5rem;
-    background: var(--primary-gradient);
-    border-radius: 0 1rem 1rem 0;
-    border: none;
-    cursor: pointer;
+    position: absolute;
+    left: 1.5rem;
+    
+    top: 50%;
+    transform: translateY(-50%);
+    
     font-size: 1.8rem;
-    color: white;
+    color: #999;
+
+    pointer-events: none;
 }
 
 /* --- Seção de Tarefas --- */
